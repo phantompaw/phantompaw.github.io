@@ -1,4 +1,5 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycbwz2MfPProC44Tz_i0L1VZkGcP2-lTIB0tHicLbi2dm853cgMlVzSUazMv1-xUIpfTI/exec';
+
 const form = document.getElementById('feedbackForm');
 
 form.addEventListener('submit', (e) => {
@@ -8,12 +9,17 @@ form.addEventListener('submit', (e) => {
     fetch(scriptURL, {
         method: 'POST',
         body: formData,
-        mode: 'cors', // 啟用跨域
         headers: {
             'Accept': 'application/json',
-        }
+        },
+        mode: 'cors', // 啟用跨域
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('伺服器回應錯誤');
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.message === 'Success') {
                 alert('回饋已成功送出！感謝您的參與！');
