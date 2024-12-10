@@ -5,16 +5,21 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(form);
 
-    fetch(scriptURL, { method: 'POST', body: formData })
-        .then(response => response.text())
-        .then(text => {
-            console.log('Server Response:', text);
-            if (text.trim() === 'Success') {
+    fetch(scriptURL, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors', // 啟用跨域
+        headers: {
+            'Accept': 'application/json',
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Success') {
                 alert('回饋已成功送出！感謝您的參與！');
                 form.reset();
             } else {
-                alert('伺服器返回錯誤，請稍後再試。');
-                console.error('Server Error:', text);
+                alert(`伺服器返回錯誤: ${data.message}`);
             }
         })
         .catch(error => {
@@ -22,4 +27,3 @@ form.addEventListener('submit', (e) => {
             console.error('Error!', error.message);
         });
 });
-
