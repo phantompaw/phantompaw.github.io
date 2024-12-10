@@ -1,1 +1,1 @@
-# phantompaw.github.io
+## [Go to Phantom Paw](https://phantompaw.github.io)
