@@ -36,7 +36,7 @@ body {
     display: flex;
     transition: var(--transition);
     flex-direction: column;
-    min-height: 100vw;
+    min-height: 100vh;
 }
 
 header > nav {
