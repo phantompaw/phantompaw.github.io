@@ -170,3 +170,9 @@ footer {
     background-color: var(--button-hover-bg-color);
     color: var(--button-hover-text-color);
 }
+.feedbookbtn:disabled {
+    background-color: #ccc;  /* 灰色背景 */
+    color: #777;  /* 灰色文字 */
+    border: 1px solid #bbb;  /* 灰色邊框 */
+    cursor: not-allowed;  /* 改變鼠標樣式 */
+}

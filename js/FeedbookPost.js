@@ -23,6 +23,10 @@ function showError(message) {
 }
 
 function handleSubmit(event) {
+    const submitButton = document.querySelector('.feedbookbtn');
+    submitButton.disabled = true;
+    submitButton.classList.add('disabled');
+
     event.preventDefault();
 
     const form = document.getElementById('feedbackForm');
@@ -34,15 +38,23 @@ function handleSubmit(event) {
     const feedback = sanitizeInput(form.feedback.value);
     const other = sanitizeInput(form.other.value);
     const csrfToken = sanitizeInput(form.csrfToken.value);
+
+    // Validate inputs
     if (!validateName(name)) {
         showError("姓名格式不正確，請勿包含符號！");
+        submitButton.disabled = false;
+        submitButton.classList.remove('disabled');
         return;
     }
 
     if (!validateEmail(email)) {
         showError("電子郵件格式不正確！");
+        submitButton.disabled = false;
+        submitButton.classList.remove('disabled');
         return;
     }
+
+    // Prepare form data
     const formData = new FormData();
     formData.append('name', name);
     formData.append('email', email);
@@ -53,6 +65,7 @@ function handleSubmit(event) {
     formData.append('other', other);
     formData.append('csrfToken', csrfToken);
 
+    // Send data via fetch API
     fetch(scriptURL, {
         method: 'POST',
         body: formData,
@@ -60,18 +73,24 @@ function handleSubmit(event) {
             'Accept': 'application/json',
         },
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === 'Success') {
-                alert('回饋已成功送出！感謝您的參與！');
-                form.reset();
-                document.getElementById('errorArea').style.display = "none";
-            } else {
-                showError(`伺服器返回錯誤: ${data.message}`);
-            }
-        })
-        .catch(error => {
-            showError('發生錯誤，請稍後再試！');
-            console.error('Error!', error.message);
-        });
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === 'Success') {
+            alert('回饋已成功送出！感謝您的參與！');
+            form.reset();
+            document.getElementById('errorArea').style.display = "none";
+        } else {
+            showError(`伺服器返回錯誤: ${data.message}`);
+        }
+        // Re-enable the submit button and remove gray effect
+        submitButton.disabled = false;
+        submitButton.classList.remove('disabled');
+    })
+    .catch(error => {
+        showError('發生錯誤，請稍後再試！');
+        console.error('Error!', error.message);
+        // Re-enable the submit button and remove gray effect
+        submitButton.disabled = false;
+        submitButton.classList.remove('disabled');
+    });
 }
