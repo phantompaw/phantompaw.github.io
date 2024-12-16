@@ -1,10 +1,28 @@
 const scriptURL = 'https://script.google.com/macros/s/AKfycbwz2MfPProC44Tz_i0L1VZkGcP2-lTIB0tHicLbi2dm853cgMlVzSUazMv1-xUIpfTI/exec';
 
-const form = document.getElementById('feedbackForm');
+function sanitizeInput(input) {
+    const temp = document.createElement('div');
+    temp.textContent = input;
+    return temp.innerHTML;
+}
+function getCSRFToken() {
+    const tokenField = document.getElementById('csrfToken');
+    return tokenField ? tokenField.value : '';
+}
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
+function handleSubmit(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('feedbackForm');
+    const formData = new FormData();
+    formData.append('name', sanitizeInput(form.name.value));
+    formData.append('age', sanitizeInput(form.age.value));
+    formData.append('job', sanitizeInput(form.job.value));
+    formData.append('gender', sanitizeInput(form.gender.value));
+    formData.append('feedback', sanitizeInput(form.feedback.value));
+    formData.append('other', sanitizeInput(form.other.value));
+    const csrfToken = getCSRFToken();
+    formData.append('csrfToken', csrfToken);
 
     fetch(scriptURL, {
         method: 'POST',
@@ -12,7 +30,6 @@ form.addEventListener('submit', (e) => {
         headers: {
             'Accept': 'application/json',
         },
-        mode: 'cors',
     })
         .then(response => {
             if (!response.ok) {
@@ -32,4 +49,6 @@ form.addEventListener('submit', (e) => {
             alert('發生錯誤，請稍後再試！');
             console.error('Error!', error.message);
         });
-});
+
+    return false;
+}

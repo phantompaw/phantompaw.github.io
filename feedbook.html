@@ -19,29 +19,30 @@
     <main>
         <section class="feedback-form">
             <h1>分享你的回饋</h1>
-            <form id="feedbackForm">
+            <form id="feedbackForm" onsubmit="return handleSubmit(event);">
                 <label for="name">姓名:</label>
                 <input type="text" id="name" name="name" required>
-            
+                
                 <label for="age">年齡:</label>
                 <input type="number" id="age" name="age" required>
                 
                 <label for="job">職業:</label>
                 <input type="text" id="job" name="job">
-            
+                
                 <label for="gender">性別:</label>
                 <select id="gender" name="gender" required>
                     <option value="male">男性</option>
                     <option value="female">女性</option>
                     <option value="other">其他</option>
                 </select>
-            
+                
                 <label for="feedback">回饋內文:</label>
                 <textarea id="feedback" name="feedback" rows="4" required></textarea>
-            
+                
                 <label for="other">其他:</label>
                 <textarea id="other" name="other" rows="2"></textarea>
-            
+                <input type="hidden" id="csrfToken" name="csrfToken" value="secure_token_here">
+                
                 <button type="submit">送出回饋</button>
             </form>
         </section>
