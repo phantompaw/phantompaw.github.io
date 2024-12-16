@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./img/Phantom-Paw.jpg">
     <title>Phantom Paw Feedback</title>
 </head>
 
@@ -21,8 +20,11 @@
         <section class="feedback-form">
             <h1>分享你的回饋</h1>
             <form id="feedbackForm" onsubmit="return handleSubmit(event);">
-                <label for="name">姓名:</label>
+                <label for="name">姓名 (不得含符號):</label>
                 <input type="text" id="name" name="name" required placeholder="請輸入你的姓名">
+            
+                <label for="email">電子郵件:</label>
+                <input type="email" id="email" name="email" required placeholder="example@domain.com">
             
                 <label for="age">年齡:</label>
                 <input type="number" id="age" name="age" min="10" max="100" required placeholder="10 - 100 歲">
@@ -52,10 +54,9 @@
         </section>
     </main>
     <footer>
-        <p>© 2024 Phantom Paw. Careful! Copying this text might summon a cat to stare at you.</p>
+        <p>© 2024 Phantom Paw</p>
     </footer>
     <script src="./js/FeedbookPost.js"></script>
-    <script src="./js/themeToggle.js"></script>
 </body>
 
 </html>
