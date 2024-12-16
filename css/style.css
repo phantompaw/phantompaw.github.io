@@ -104,7 +104,6 @@ footer {
     color: var(--nav-link-color);
 }
 
-/* 響應式設計 */
 @media (max-width: 600px) {
     header > nav {
         flex-direction: column;
