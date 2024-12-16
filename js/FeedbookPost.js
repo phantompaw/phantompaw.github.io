@@ -1,4 +1,4 @@
-const scriptURL = 'https://script.google.com/macros/s/your_script_url_here/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwz2MfPProC44Tz_i0L1VZkGcP2-lTIB0tHicLbi2dm853cgMlVzSUazMv1-xUIpfTI/exec';
 
 function sanitizeInput(input) {
     const temp = document.createElement('div');
