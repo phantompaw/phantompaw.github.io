@@ -12,7 +12,7 @@ form.addEventListener('submit', (e) => {
         headers: {
             'Accept': 'application/json',
         },
-        mode: 'cors', // 啟用跨域
+        mode: 'cors',
     })
         .then(response => {
             if (!response.ok) {
