@@ -7,12 +7,12 @@ function sanitizeInput(input) {
 }
 
 function validateName(name) {
-    const regex = /^[a-zA-Z\u4e00-\u9fa5\s]+$/; // 限制只能使用中文、英文與空格
+    const regex = /^[a-zA-Z\u4e00-\u9fa5\s]+$/;
     return regex.test(name);
 }
 
 function validateEmail(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 確保包含 @ 與 .
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
 }
 
@@ -40,8 +40,8 @@ function handleSubmit(event) {
     }
 
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
+    formData.append('name', sanitizeInput(form.name.value));
+    formData.append('email', sanitizeInput(form.email.value));
     formData.append('age', sanitizeInput(form.age.value));
     formData.append('job', sanitizeInput(form.job.value));
     formData.append('gender', sanitizeInput(form.gender.value));
@@ -70,4 +70,5 @@ function handleSubmit(event) {
             showError('發生錯誤，請稍後再試！');
             console.error('Error!', error.message);
         });
+
 }
