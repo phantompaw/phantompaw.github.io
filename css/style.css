@@ -107,40 +107,13 @@ footer {
     background-color: var(--nav-bg-color);
     color: var(--nav-link-color);
 }
-
-@media (max-width: 700px) {
-    header > nav {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        &>button{
-            width: auto;
-        }
-    }
-
-    .feedback-form {
-        padding: var(--padding);
-    }
-
-    input,
-    select,
-    textarea,
-    button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .theme-button {
-        align-self: flex-end;
-    }
-}
 /* feedbook */
 .feedback-form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 5px;
     padding: 20px;
     background-color: var(--nav-bg-color);
     border-radius: 8px;
@@ -188,4 +161,26 @@ footer {
     color: #777;  /* 灰色文字 */
     border: 1px solid #bbb;  /* 灰色邊框 */
     cursor: not-allowed;  /* 改變鼠標樣式 */
+}
+@media (max-width: 700px) {
+    header > nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        &>button{
+            width: auto;
+        }
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .theme-button {
+        align-self: flex-end;
+    }
 }
