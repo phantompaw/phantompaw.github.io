@@ -28,7 +28,12 @@ function handleSubmit(event) {
     const form = document.getElementById('feedbackForm');
     const name = sanitizeInput(form.name.value);
     const email = sanitizeInput(form.email.value);
-
+    const age = sanitizeInput(form.age.value);
+    const job = sanitizeInput(form.job.value);
+    const gender = sanitizeInput(form.gender.value);
+    const feedback = sanitizeInput(form.feedback.value);
+    const other = sanitizeInput(form.other.value);
+    const csrfToken = sanitizeInput(form.csrfToken.value);
     if (!validateName(name)) {
         showError("姓名格式不正確，請勿包含符號！");
         return;
@@ -38,16 +43,15 @@ function handleSubmit(event) {
         showError("電子郵件格式不正確！");
         return;
     }
-
     const formData = new FormData();
-    formData.append('name', sanitizeInput(form.name.value));
-    formData.append('email', sanitizeInput(form.email.value));
-    formData.append('age', sanitizeInput(form.age.value));
-    formData.append('job', sanitizeInput(form.job.value));
-    formData.append('gender', sanitizeInput(form.gender.value));
-    formData.append('feedback', sanitizeInput(form.feedback.value));
-    formData.append('other', sanitizeInput(form.other.value));
-    formData.append('csrfToken', sanitizeInput(form.csrfToken.value));
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('age', age);
+    formData.append('job', job);
+    formData.append('gender', gender);
+    formData.append('feedback', feedback);
+    formData.append('other', other);
+    formData.append('csrfToken', csrfToken);
 
     fetch(scriptURL, {
         method: 'POST',
@@ -70,5 +74,4 @@ function handleSubmit(event) {
             showError('發生錯誤，請稍後再試！');
             console.error('Error!', error.message);
         });
-
 }
