@@ -1,5 +1,5 @@
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwz2MfPProC44Tz_i0L1VZkGcP2-lTIB0tHicLbi2dm853cgMlVzSUazMv1-xUIpfTI/exec';
-
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyrinoMgmCl283IJk8R-jbFgo0s1DDOkP502v21gDxkCUaja1XjpTS-3LvExbF3-8P8/exec';
+                   
 function sanitizeInput(input) {
     const temp = document.createElement('div');
     temp.textContent = input;
