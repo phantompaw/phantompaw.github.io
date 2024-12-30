@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
@@ -10,27 +10,42 @@
 </head>
 
 <body>
+    <div id="loadingOverlay" style="display: none;">
+        <p>Loading...</p>
+    </div>
+
     <header>
-        <nav>
-            <img src="./static/img/Phantom-Paw.jpg" alt="Phantom Paw Logo" class="logo" loading="lazy">
-            <h1>Phantom Paw</h1>
-            <a href="feedbook.html">回饋</a>
-            <a href="./scenery/scenery-scroll-animation.html">Scenery</a>
-            <button id="toggleTheme" class="theme-button">切換主題</button>
+        <nav class="navbar">
+            <div class="nav-container">
+                <img src="./static/img/Phantom-Paw.jpg" alt="Phantom Paw Logo" class="logo" loading="lazy">
+                <h1>Phantom Paw</h1>
+                <div class="nav-links">
+                    <a href="feedbook.html">回饋</a>
+                    <a href="./scenery/scenery-scroll-animation.html">Scenery</a>
+                    <button id="toggleTheme" class="theme-button">切換主題</button>
+                </div>
+            </div>
         </nav>
     </header>
+
     <main>
         <section class="intro">
-            <img src="./static/img/Phantom-Paw.jpg">
-            <h1>歡迎來到 Phantom Paw</h1>
-            <p>我們致力於提供卓越的網頁設計與用戶體驗。</p>
-            <a href="feedbook.html" class="cta-button">分享你的回饋</a>
+            <img src="./static/img/Phantom-Paw.jpg" alt="Intro Image" class="intro-img">
+            <div class="intro-content">
+                <h1>歡迎來到 Phantom Paw</h1>
+                <p>我們致力於提供卓越的網頁設計與用戶體驗。</p>
+                <a href="feedbook.html" class="cta-button">分享你的回饋</a>
+            </div>
         </section>
     </main>
+
     <footer>
-        <p>© 2024 Phantom Paw. Careful! Copying this text might summon a cat to stare at you.</p>
+        <div class="footer-content">
+            <p>© 2024 Phantom Paw. Careful! Copying this text might summon a cat to stare at you.</p>
+        </div>
     </footer>
-    <script src="./js/themeToggle.js"></script>
+
+    <script src="./static/js/themeToggle.js"></script>
 </body>
 
 </html>
