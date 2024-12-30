@@ -25,16 +25,14 @@ techphantompaw/
     │       ├── botIntegration.js   # 與機器人互動腳本
     │       ├── FeedbookPost.js     # 回饋表單提交腳本
     │       ├── FeedbookGet.js      # 回饋內容管理get腳本
+    │       ├── admin.js            # 登入處理
     │       ├── themeToggle.js      # 主題切換腳本
     │       └── main.js             # 自定義腳本
-    │
-    ├── templates/                  # Flask 模板
-    │   ├── index.html              # 靜態首頁模板
-    │   └── feedback.html           # 用戶回饋模板
     │
     ├── app.py                      # Flask 後端服務
     ├── index.html                  # 靜態首頁 (GitHub Pages)
     ├── manage.html                 # 回饋管理
+    ├── feedback.html               # 用戶回饋
     ├── README.md                   # 專案說明文件
     ├── requirements.txt            # Python 套件依賴
     └── structure.md                # 資料夾結構描述文件
