@@ -4,15 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="./img/Phantom-Paw.jpg">
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="icon" href="./static/img/Phantom-Paw.jpg">
     <title>Phantom Paw Feedback</title>
 </head>
 
 <body>
+    <div id="loadingScreen" style="display: none;">
+        <div class="loading-container">
+            <img src="./static/img/Phantom-Paw.jpg" alt="Loading Logo" class="loading-logo">
+            <p>載入中...</p>
+        </div>
+    </div>
     <header>
         <nav>
-            <img src="./img/Phantom-Paw.jpg" alt="Phantom Paw Logo" class="logo" loading="lazy">
+            <img src="./static/img/Phantom-Paw.jpg" alt="Phantom Paw Logo" class="logo" loading="lazy">
             <h1>Phantom Paw</h1>
             <a href="index.html">首頁</a>
             <button id="toggleTheme" class="theme-button">切換主題</button>
@@ -24,42 +30,52 @@
             <form id="feedbackForm" onsubmit="return handleSubmit(event);">
                 <label for="name">姓名 (不得含符號):</label>
                 <input type="text" id="name" name="name" required placeholder="請輸入你的姓名">
-            
+
                 <label for="email">電子郵件:</label>
                 <input type="email" id="email" name="email" required placeholder="example@domain.com">
-            
+
                 <label for="age">年齡:</label>
                 <input type="number" id="age" name="age" min="10" max="100" required placeholder="10 - 100 歲">
-            
+
                 <label for="job">職業:</label>
                 <input type="text" id="job" name="job" placeholder="請輸入你的職業">
-            
+
                 <label for="gender">性別:</label>
                 <select id="gender" name="gender" required>
                     <option value="male">男性</option>
                     <option value="female">女性</option>
                     <option value="other">其他</option>
                 </select>
-            
+
                 <label for="feedback">回饋內文 (最多 200 字):</label>
                 <textarea id="feedback" name="feedback" rows="4" maxlength="200" required placeholder="分享你的回饋..."></textarea>
-            
+
                 <label for="other">其他 (最多 100 字):</label>
                 <textarea id="other" name="other" rows="2" maxlength="100" placeholder="其他補充說明..."></textarea>
-            
+
                 <input type="hidden" id="csrfToken" name="csrfToken" value="secure_token_here">
-            
+
                 <button type="submit" class="feedbookbtn">送出回饋</button>
             </form>
-            
-            <section id="errorArea" style="color: red; display: none; background-color: white; border-radius: 5px; padding: 2px;margin: 2px;"></section>
+
+            <section id="errorArea" class="error-area" style="display: none;">
+                <!-- 錯誤訊息區 -->
+            </section>
         </section>
     </main>
     <footer>
         <p>© 2024 Phantom Paw. Careful! Copying this text might summon a cat to stare at you.</p>
     </footer>
-    <script src="../static/js/FeedbookPost.js"></script>
-    <script src="../static/js/themeToggle.js"></script>
+
+    <script src="./static/js/FeedbookPost.js"></script>
+    <script src="./static/js/themeToggle.js"></script>
+    <script>
+        // 顯示載入畫面
+        window.addEventListener('load', () => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            loadingScreen.style.display = 'none';
+        });
+    </script>
 </body>
 
 </html>
