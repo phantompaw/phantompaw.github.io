@@ -10,33 +10,30 @@
 </head>
 
 <body>
-    <div id="loadingOverlay" style="display: none;">
-        <p>Loading...</p>
+    <div id="loading">
+        <h3>loading</h3>
+        <h2 id="percentage">0%</h2> <!--百分比數-->
+        <div id="progress-bar">
+            <div id="progress-box"></div>
+        </div>
     </div>
-
     <header>
-        <nav class="navbar">
-            <div class="nav-container">
-                <img src="./static/img/Phantom-Paw.jpg" alt="Phantom Paw Logo" class="logo" loading="lazy">
-                <h1>Phantom Paw</h1>
-                <div class="nav-links">
-                    <a href="feedbook.html">回饋</a>
-                    <a href="./scenery/scenery-scroll-animation.html">Scenery</a>
-                    <button id="toggleTheme" class="theme-button">切換主題</button>
-                </div>
-            </div>
+        <nav>
+            <img src="./static/img/Phantom-Paw.jpg" alt="Phantom Paw Logo" class="logo" loading="lazy">
+            <h1>Phantom Paw</h1>
+            <a href="feedbook.html">回饋</a>
+            <a href="manage.html">登入</a>
+            <a href="index.html">首頁</a>
+            <button id="toggleTheme" class="theme-button">切換主題</button>
         </nav>
     </header>
-
     <main>
-        <section class="intro">
+        <div class="feedback-introduction">   
             <img src="./static/img/Phantom-Paw.jpg" alt="Intro Image" class="intro-img">
-            <div class="intro-content">
-                <h1>歡迎來到 Phantom Paw</h1>
-                <p>我們致力於提供卓越的網頁設計與用戶體驗。</p>
-                <a href="feedbook.html" class="cta-button">分享你的回饋</a>
-            </div>
-        </section>
+            <h1>歡迎來到 Phantom Paw</h1>
+            <p>我們致力於提供卓越的網頁設計與用戶體驗。</p>
+            <a href="feedbook.html" class="cta-button">分享你的回饋</a>
+        </div>
     </main>
 
     <footer>
@@ -45,6 +42,9 @@
         </div>
     </footer>
 
+    <script src="./static/js/jquery.js"></script>
+    <script src="./static/js/jquery-ui.min.js"></script>
+    <script src="./static/js/loading.js"></script>
     <script src="./static/js/themeToggle.js"></script>
 </body>
 

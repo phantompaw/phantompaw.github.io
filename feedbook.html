@@ -10,16 +10,19 @@
 </head>
 
 <body>
-    <div id="loadingScreen" style="display: none;">
-        <div class="loading-container">
-            <img src="./static/img/Phantom-Paw.jpg" alt="Loading Logo" class="loading-logo">
-            <p>載入中...</p>
+    <div id="loading">
+        <h3>loading</h3>
+        <h2 id="percentage">0%</h2> <!--百分比數-->
+        <div id="progress-bar">
+            <div id="progress-box"></div>
         </div>
     </div>
     <header>
         <nav>
             <img src="./static/img/Phantom-Paw.jpg" alt="Phantom Paw Logo" class="logo" loading="lazy">
             <h1>Phantom Paw</h1>
+            <a href="feedbook.html">回饋</a>
+            <a href="manage.html">登入</a>
             <a href="index.html">首頁</a>
             <button id="toggleTheme" class="theme-button">切換主題</button>
         </nav>
@@ -67,15 +70,11 @@
         <p>© 2024 Phantom Paw. Careful! Copying this text might summon a cat to stare at you.</p>
     </footer>
 
-    <script src="./static/js/FeedbookPost.js"></script>
+    <script src="./static/js/jquery.js"></script>
+    <script src="./static/js/jquery-ui.min.js"></script>
+    <script src="./static/js/loading.js"></script>
     <script src="./static/js/themeToggle.js"></script>
-    <script>
-        // 顯示載入畫面
-        window.addEventListener('load', () => {
-            const loadingScreen = document.getElementById('loadingScreen');
-            loadingScreen.style.display = 'none';
-        });
-    </script>
+    <script src="./static/js/FeedbookPost.js"></script>
 </body>
 
 </html>

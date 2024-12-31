@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
+    document.body.scrollTop = 0; 
+    document.documentElement.scrollTop = 0;   
     const toggleThemeButton = document.getElementById("toggleTheme");
     const body = document.body;
-    const currentTheme = localStorage.getItem("theme") || "dark";
+
+    const currentTheme = localStorage.getItem("theme") || 
+                         (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     body.classList.add(currentTheme);
 
     function updateButtonText() {
-        if (body.classList.contains("dark")) {
-            toggleThemeButton.textContent = "切換到淺色模式";
-        } else {
-            toggleThemeButton.textContent = "切換到深色模式";
-        }
+        toggleThemeButton.textContent = body.classList.contains("dark") ? "切換到淺色模式" : "切換到深色模式";
     }
 
     toggleThemeButton.addEventListener("click", () => {
