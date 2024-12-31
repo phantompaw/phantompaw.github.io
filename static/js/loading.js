@@ -17,5 +17,5 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 50);
             console.log("Loading Complete");
         }
-    }, 20); // 每 20 毫秒更新一次
+    }, 10);
 });

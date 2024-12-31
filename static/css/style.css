@@ -37,7 +37,7 @@ body.dark {
     /* loading灰色 */
     font-weight: 700;
     /* 加粗文字 */
-    position: absolute;
+    position: fixed;
     font-size: 2em;
     width: 100vw;
     height: 100vh;

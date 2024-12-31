@@ -26,6 +26,9 @@ techphantompaw/
     │       ├── FeedbookPost.js     # 回饋表單提交腳本
     │       ├── FeedbookGet.js      # 回饋內容管理get腳本
     │       ├── admin.js            # 登入處理
+    │       ├── loading.js          # loading動畫處理
+    │       ├── jquery.js           # jquery
+    │       ├── jquery-ui.min.js    # jquery UI
     │       ├── themeToggle.js      # 主題切換腳本
     │       └── main.js             # 自定義腳本
     │
