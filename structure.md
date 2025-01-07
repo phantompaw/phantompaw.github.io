@@ -1,17 +1,8 @@
 techphantompaw/
 │
 ├── bot/                            # Discord 機器人相關程式
-│   ├── bot.py                      # 機器人主程式
-│   ├── config.py                   # 環境變數載入與配置
-│   ├── tasks.py                    # 定時任務 (show_ads)
-│   ├── bot.env                     # 私密連結存放
-│   └── commands/                   # 指令模組
-│       ├── __init__.py
-│       ├── subscription.py         # 功能 1: 會員訂閱制
-│       ├── booking.py              # 功能 4: 預約系統
-│       ├── gaming.py               # 功能 5: 遊戲相關收入
-│       ├── tournament.py           # 功能 6: 付費活動
-│       └── vip.py                  # 功能 7: 高級機器人服務
+│   ├── .env                        # .env
+│   └── discordbot.js               # bot
 │
 └── phantompaw.github.io/           # GitHub Pages 靜態網站
     │

@@ -27,14 +27,12 @@
             <button id="toggleTheme" class="theme-button">切換主題</button>
         </nav>
     </header>
+    
     <main>
-        <div class="feedback-introduction">   
-            <img src="./static/img/Phantom-Paw.jpg" alt="Intro Image" class="intro-img">
-            <h1>歡迎來到 Phantom Paw</h1>
-            <p>我們致力於提供卓越的網頁設計與用戶體驗。</p>
-            <a href="feedbook.html" class="cta-button">分享你的回饋</a>
+        <div id="bot-status">
+            <h2>機器人狀態：<span id="bot-status-text">載入中...</span></h2>
         </div>
-    </main>
+    </main>    
 
     <footer>
         <div class="footer-content">
@@ -46,6 +44,33 @@
     <script src="./static/js/jquery-ui.min.js"></script>
     <script src="./static/js/loading.js"></script>
     <script src="./static/js/themeToggle.js"></script>
+    
+    <script>
+        // 請求 Discord Bot 狀態的函數
+        async function getBotStatus() {
+            try {
+                const response = await fetch('/api/bot-status');
+                const data = await response.json();
+
+                // 更新 bot-status-text 內容
+                const statusText = document.getElementById('bot-status-text');
+                statusText.textContent = data.status;
+
+                // 顯示更多詳細資料
+                if (data.status === '在線') {
+                    statusText.style.color = 'green';
+                } else {
+                    statusText.style.color = 'red';
+                }
+            } catch (error) {
+                console.error('無法取得機器人狀態:', error);
+                document.getElementById('bot-status-text').textContent = '無法取得狀態';
+            }
+        }
+
+        // 在頁面載入時取得狀態
+        window.onload = getBotStatus;
+    </script>
 </body>
 
 </html>
