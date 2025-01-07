@@ -27,6 +27,7 @@
             <p><strong>狀態：</strong> <span id="bot-status-text">載入中...</span></p>
             <p><strong>名稱：</strong> <span id="bot-username">載入中...</span></p>
             <p><strong>伺服器數量：</strong> <span id="bot-servers">載入中...</span></p>
+            <p><span id="time">多少</span>秒前更新...</p>
         </div>
     </main>    
 
@@ -39,17 +40,24 @@
     <script src="./static/js/jquery.js"></script>
     <script src="./static/js/themeToggle.js"></script>
     <script>
-        // Fetch API to get bot status from Replit server
         const apiUrl = "https://605d0141-cd18-42f6-99af-6188ea17694f-00-1zs9xxh05uyho.pike.replit.dev/api/bot-status";
+
+        let lastUpdateTime = Date.now();
 
         function updateBotStatus() {
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
-                    console.error(data);
+                    console.log(data);
                     document.getElementById("bot-status-text").innerText = data.status;
                     document.getElementById("bot-username").innerText = data.username;
                     document.getElementById("bot-servers").innerText = data.servers;
+                    
+                    // 更新時間顯示
+                    const currentTime = Date.now();
+                    const secondsPassed = Math.floor((currentTime - lastUpdateTime) / 1000);
+                    document.getElementById("time").innerText = secondsPassed;
+                    lastUpdateTime = currentTime;
                 })
                 .catch(error => {
                     console.error("無法取得機器人狀態：", error);
@@ -59,7 +67,10 @@
                 });
         }
 
-        // 更新狀態
+        // 每 10 秒更新一次狀態
+        setInterval(updateBotStatus, 10000);
+
+        // 初次載入時更新一次
         updateBotStatus();
     </script>
 </body>
