@@ -12,7 +12,7 @@
 <body>
     <div id="loading">
         <h3>loading</h3>
-        <h2 id="percentage">0%</h2>
+        <h2 id="percentage">0%</h2> <!--百分比數-->
         <div id="progress-bar">
             <div id="progress-box"></div>
         </div>
@@ -27,14 +27,12 @@
             <button id="toggleTheme" class="theme-button">切換主題</button>
         </nav>
     </header>
-
+    
     <main>
         <div id="bot-status">
             <h2>機器人狀態：<span id="bot-status-text">載入中...</span></h2>
-            <p><strong>名稱：</strong> <span id="bot-username">載入中...</span></p>
-            <p><strong>伺服器數量：</strong> <span id="bot-servers">載入中...</span></p>
         </div>
-    </main>
+    </main>    
 
     <footer>
         <div class="footer-content">
@@ -47,28 +45,17 @@
     <script src="./static/js/loading.js"></script>
     <script src="./static/js/themeToggle.js"></script>
     <script>
-        // 假設你使用了一個API，這裡是從第三方服務獲取Bot狀態
-        function fetchBotStatus() {
-            // 使用 Discord Bot API 或其他第三方服務，這裡以範例API為例
-            const botApiUrl = 'https://discordbotlist.com/api/bots/your-bot-id'; // 請替換為你的Bot API網址
-
-            fetch(botApiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    // 顯示機器人狀態
-                    document.getElementById('bot-status-text').innerText = data.status;
-                    document.getElementById('bot-username').innerText = data.username;
-                    document.getElementById('bot-servers').innerText = data.servers;
-                })
-                .catch(error => {
-                    document.getElementById('bot-status-text').innerText = '無法取得狀態';
-                    console.error('Error fetching bot status:', error);
-                });
-        }
-
-        // 設定定時更新
-        setInterval(fetchBotStatus, 5000); // 每 5 秒更新一次
-        fetchBotStatus(); // 首次加載時立即獲取
+        // 透過 Fetch API 請求 /api/bot-status
+        fetch('/api/bot-status')
+            .then(response => response.json())
+            .then(data => {
+                // 更新網頁上的機器人狀態顯示
+                document.getElementById('bot-status-text').textContent = data.status;
+            })
+            .catch(error => {
+                console.error('無法獲取機器人狀態:', error);
+                document.getElementById('bot-status-text').textContent = '無法取得狀態';
+            });
     </script>
 </body>
 
