@@ -46,6 +46,7 @@
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
+                    console.error(data);
                     document.getElementById("bot-status-text").innerText = data.status;
                     document.getElementById("bot-username").innerText = data.username;
                     document.getElementById("bot-servers").innerText = data.servers;
