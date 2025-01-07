@@ -54,10 +54,7 @@
                     document.getElementById("bot-servers").innerText = data.servers;
                     
                     // 更新時間顯示
-                    const currentTime = Date.now();
-                    const secondsPassed = Math.floor((currentTime - lastUpdateTime) / 1000);
-                    document.getElementById("time").innerText = secondsPassed;
-                    lastUpdateTime = currentTime;
+                    lastUpdateTime = Date.now(); // 更新最後更新時間
                 })
                 .catch(error => {
                     console.error("無法取得機器人狀態：", error);
@@ -69,6 +66,13 @@
 
         // 每 10 秒更新一次狀態
         setInterval(updateBotStatus, 10000);
+
+        // 每秒更新時間
+        setInterval(() => {
+            const currentTime = Date.now();
+            const secondsPassed = Math.floor((currentTime - lastUpdateTime) / 1000);
+            document.getElementById("time").innerText = secondsPassed;
+        }, 1000);
 
         // 初次載入時更新一次
         updateBotStatus();
