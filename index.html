@@ -10,13 +10,6 @@
 </head>
 
 <body>
-    <div id="loading">
-        <h3>loading</h3>
-        <h2 id="percentage">0%</h2> <!--百分比數-->
-        <div id="progress-bar">
-            <div id="progress-box"></div>
-        </div>
-    </div>
     <header>
         <nav>
             <img src="./static/img/Phantom-Paw.jpg" alt="Phantom Paw Logo" class="logo" loading="lazy">
@@ -30,7 +23,10 @@
     
     <main>
         <div id="bot-status">
-            <h2>機器人狀態：<span id="bot-status-text">載入中...</span></h2>
+            <h2>機器人狀態：</h2>
+            <p><strong>狀態：</strong> <span id="bot-status-text">載入中...</span></p>
+            <p><strong>名稱：</strong> <span id="bot-username">載入中...</span></p>
+            <p><strong>伺服器數量：</strong> <span id="bot-servers">載入中...</span></p>
         </div>
     </main>    
 
@@ -41,21 +37,29 @@
     </footer>
 
     <script src="./static/js/jquery.js"></script>
-    <script src="./static/js/jquery-ui.min.js"></script>
-    <script src="./static/js/loading.js"></script>
     <script src="./static/js/themeToggle.js"></script>
     <script>
-        // 透過 Fetch API 請求 /api/bot-status
-        fetch('/api/bot-status')
-            .then(response => response.json())
-            .then(data => {
-                // 更新網頁上的機器人狀態顯示
-                document.getElementById('bot-status-text').textContent = data.status;
-            })
-            .catch(error => {
-                console.error('無法獲取機器人狀態:', error);
-                document.getElementById('bot-status-text').textContent = '無法取得狀態';
-            });
+        // Fetch API to get bot status from Replit server
+        const apiUrl = "https://[你的專案名稱].[你的 Replit 使用者名稱].repl.co/api/bot-status";
+
+        function updateBotStatus() {
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("bot-status-text").innerText = data.status;
+                    document.getElementById("bot-username").innerText = data.username;
+                    document.getElementById("bot-servers").innerText = data.servers;
+                })
+                .catch(error => {
+                    console.error("無法取得機器人狀態：", error);
+                    document.getElementById("bot-status-text").innerText = "無法取得狀態";
+                    document.getElementById("bot-username").innerText = "未知";
+                    document.getElementById("bot-servers").innerText = "未知";
+                });
+        }
+
+        // 更新狀態
+        updateBotStatus();
     </script>
 </body>
 
