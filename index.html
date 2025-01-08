@@ -52,9 +52,10 @@
                     document.getElementById("bot-status-text").innerText = data.status;
                     document.getElementById("bot-username").innerText = data.username;
                     document.getElementById("bot-servers").innerText = data.servers;
-                    
-                    // 更新時間顯示
+
+                    // 更新時間顯示並歸零秒數
                     lastUpdateTime = Date.now(); // 更新最後更新時間
+                    document.getElementById("time").innerText = "0";
                 })
                 .catch(error => {
                     console.error("無法取得機器人狀態：", error);
