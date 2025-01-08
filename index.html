@@ -10,6 +10,13 @@
 </head>
 
 <body>
+    <div id="loading">
+        <h3>loading</h3>
+        <h2 id="percentage">0%</h2> <!--百分比數-->
+        <div id="progress-bar">
+            <div id="progress-box"></div>
+        </div>
+    </div>
     <header>
         <nav>
             <img src="./static/img/Phantom-Paw.jpg" alt="Phantom Paw Logo" class="logo" loading="lazy">
@@ -20,7 +27,7 @@
             <button id="toggleTheme" class="theme-button">切換主題</button>
         </nav>
     </header>
-    
+
     <main>
         <div id="bot-status">
             <h2>機器人狀態：</h2>
@@ -29,7 +36,7 @@
             <p><strong>伺服器數量：</strong> <span id="bot-servers">載入中...</span></p>
             <p><span id="time">多少</span>秒前更新...</p>
         </div>
-    </main>    
+    </main>
 
     <footer>
         <div class="footer-content">
@@ -39,6 +46,7 @@
 
     <script src="./static/js/jquery.js"></script>
     <script src="./static/js/themeToggle.js"></script>
+    <script src="./static/js/loading.js"></script>
     <script>
         const apiUrl = "https://605d0141-cd18-42f6-99af-6188ea17694f-00-1zs9xxh05uyho.pike.replit.dev/api/bot-status";
 

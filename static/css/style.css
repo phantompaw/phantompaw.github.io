@@ -9,10 +9,9 @@ body.light {
     --text-color: #333;
     --link-color: #007bff;
     --link-hover-color: #0056b3;
-    --header-bg: #222;         
+    --header-bg: #222;
     --header-text: #fff;
-    --intro-bg: #e8e8e8;
-    --intro-title-color: #222;
+    --header-text-hover: #ffd700;
     --footer-bg: #222;
     --footer-text: #fff;
 }
@@ -24,12 +23,19 @@ body.dark {
     --link-hover-color: #ffd700;
     --header-bg: #333;
     --header-text: #ffd700;
-    --intro-bg: #333;
-    --intro-title-color: #ffd700;
+    --header-text-hover: #fff;
     --footer-bg: #333;
     --footer-text: #ffd700;
 }
 
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--background-color, #f5f5f5);
+    flex-direction: column;
+}
 #loading {
     background-color: #333;
     text-align: center;
@@ -70,17 +76,6 @@ body.dark {
     bottom: 20px;
     border-radius: 5px;
     transition: width 0.1s ease-in-out;
-    /* 平滑動畫 */
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    display: flex;
-    min-height: 100vh;
-    overflow: hidden;
-    background-color: var(--background-color, #f5f5f5);
-    flex-direction: column;
 }
 
 main {
@@ -123,7 +118,7 @@ nav {
 .theme-button {
     padding: 0.5rem 1rem;
     background-color: #333;
-    color: #ffd700;
+    color: var(--header-text, #fff);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -133,7 +128,7 @@ nav {
 
 .theme-button:hover {
     background-color: #444;
-    color: #fff;
+    color: var(--header-text-hover, #fff);
 }
 
 .intro-content h1 {
@@ -189,8 +184,7 @@ footer p {
     z-index: 9999;
     font-size: 24px;
 }
-
-/* Feedbook Form */
+/* 回饋表單 */
 .feedback-form {
     max-width: 600px;
     margin: 2rem auto;
@@ -204,15 +198,12 @@ footer p {
 .feedback-form h1 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    color: var(--form-title-color, #333);
     text-align: center;
 }
 
 .feedback-form label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: var(--label-color, #333);
 }
 
 .feedback-form input,
@@ -223,19 +214,9 @@ footer p {
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1rem;
-    background-color: var(--input-bg, #f9f9f9);
-    transition: border-color 0.3s, background-color 0.3s;
 }
 
-.feedback-form input:focus,
-.feedback-form select:focus,
-.feedback-form textarea:focus {
-    border-color: #007bff;
-    background-color: var(--input-focus-bg, #fff);
-}
-
-.feedback-form button {
+.feedbookbtn {
     display: block;
     width: 100%;
     padding: 0.8rem;
@@ -243,27 +224,44 @@ footer p {
     color: #222;
     border: none;
     border-radius: 5px;
-    font-weight: bold;
-    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s;
 }
 
-.feedback-form button:hover {
+.feedbookbtn:hover {
     background-color: #333;
     color: #ffd700;
 }
 
-.error-area {
-    padding: 1rem;
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    margin-top: 1rem;
+.feedbookbtn.disabled {
+    background-color: #e0e0e0;
+    color: #aaa;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
-/* Admin Page */
+.error-message {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+/* 輸入框錯誤樣式 */
+input.error,
+textarea.error {
+    border-color: #f00; /* 紅色邊框 */
+    background-color: #ffe6e6; /* 淺紅色背景 */
+}
+
+/* 錯誤提示文字 */
+.error-message {
+    color: #f00; /* 紅色字體 */
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
 .admin-page {
     max-width: 800px;
     margin: 2rem auto;
@@ -323,7 +321,14 @@ footer p {
 .admin-page .action-buttons button:hover {
     background-color: #0056b3;
 }
-.bot-status{
-    color: var(--text-color, #333);
+
+#bot-status {
     text-align: center;
+    width: 100vw;
+
+    & p,
+    & h2 {
+        color: var(--text-color, #333);
+        ;
+    }
 }

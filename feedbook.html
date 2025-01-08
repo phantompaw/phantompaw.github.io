@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="icon" href="./static/img/Phantom-Paw.jpg">
-    <title>Phantom Paw Feedback</title>
+    <title>Phantom Paw 回饋</title>
 </head>
 
 <body>
     <div id="loading">
-        <h3>loading</h3>
-        <h2 id="percentage">0%</h2> <!--百分比數-->
+        <h3>載入中</h3>
+        <h2 id="percentage">0%</h2> <!-- 顯示進度百分比 -->
         <div id="progress-bar">
             <div id="progress-box"></div>
         </div>
@@ -22,52 +22,54 @@
             <img src="./static/img/Phantom-Paw.jpg" alt="Phantom Paw Logo" class="logo" loading="lazy">
             <h1>Phantom Paw</h1>
             <a href="feedbook.html">回饋</a>
-            <a href="manage.html">登入</a>
+            <a href="manage.html">管理</a>
             <a href="index.html">首頁</a>
             <button id="toggleTheme" class="theme-button">切換主題</button>
         </nav>
     </header>
     <main>
         <section class="feedback-form">
-            <h1>分享你的回饋</h1>
-            <form id="feedbackForm" onsubmit="return handleSubmit(event);">
-                <label for="name">姓名 (不得含符號):</label>
-                <input type="text" id="name" name="name" required placeholder="請輸入你的姓名">
-
-                <label for="email">電子郵件:</label>
-                <input type="email" id="email" name="email" required placeholder="example@domain.com">
-
-                <label for="age">年齡:</label>
-                <input type="number" id="age" name="age" min="10" max="100" required placeholder="10 - 100 歲">
-
-                <label for="job">職業:</label>
-                <input type="text" id="job" name="job" placeholder="請輸入你的職業">
-
-                <label for="gender">性別:</label>
-                <select id="gender" name="gender" required>
-                    <option value="male">男性</option>
-                    <option value="female">女性</option>
-                    <option value="other">其他</option>
-                </select>
-
-                <label for="feedback">回饋內文 (最多 200 字):</label>
-                <textarea id="feedback" name="feedback" rows="4" maxlength="200" required placeholder="分享你的回饋..."></textarea>
-
-                <label for="other">其他 (最多 100 字):</label>
-                <textarea id="other" name="other" rows="2" maxlength="100" placeholder="其他補充說明..."></textarea>
-
+            <h1>分享您的回饋</h1>
+            <form id="feedbackForm" method="POST" action="javascript:void(0);">
+                <div>
+                    <label for="name">姓名 (不得含符號):</label>
+                    <input type="text" id="name" name="name" required placeholder="請輸入您的姓名">
+                </div>
+                <div>
+                    <label for="email">電子郵件:</label>
+                    <input type="email" id="email" name="email" required placeholder="example@domain.com">
+                </div>
+                <div>
+                    <label for="age">年齡:</label>
+                    <input type="number" id="age" name="age" min="10" max="100" required placeholder="10 - 100 歲">
+                </div>
+                <div>
+                    <label for="job">職業:</label>
+                    <input type="text" id="job" name="job" placeholder="請輸入您的職業">
+                </div>
+                <div>
+                    <label for="gender">性別:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="male">男性</option>
+                        <option value="female">女性</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="feedback">回饋內文 (最多 200 字):</label>
+                    <textarea id="feedback" name="feedback" rows="4" maxlength="200" required placeholder="分享您的回饋..."></textarea>
+                </div>
+                <div>
+                    <label for="other">其他補充 (最多 100 字):</label>
+                    <textarea id="other" name="other" rows="2" maxlength="100" placeholder="其他補充說明..."></textarea>
+                </div>
                 <input type="hidden" id="csrfToken" name="csrfToken" value="secure_token_here">
-
                 <button type="submit" class="feedbookbtn">送出回饋</button>
             </form>
-
-            <section id="errorArea" class="error-area" style="display: none;">
-                <!-- 錯誤訊息區 -->
-            </section>
         </section>
     </main>
     <footer>
-        <p>© 2024 Phantom Paw. Careful! Copying this text might summon a cat to stare at you.</p>
+        <p>© 2024 Phantom Paw. 小心！複製此文字可能會召喚貓咪來盯著你看。</p>
     </footer>
 
     <script src="./static/js/jquery.js"></script>
